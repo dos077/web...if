@@ -1,18 +1,21 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <q-btn @click="fetchReddit">test fetch</q-btn>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import fetchReddit from '@/data/redditRss';
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
+  },
+  methods: {
+    async fetchReddit() {
+      const data = await fetchReddit('nba');
+      console.log(data);
+    },
   },
 };
 </script>
