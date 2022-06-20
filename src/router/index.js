@@ -1,19 +1,65 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home.vue';
+import HomeView from '../views/Home.vue';
+import NinetiesView from '../views/NinetiesView.vue';
+import MilleniumView from '../views/MilleniumView.vue';
+import RoyalView from '../views/RoyalView.vue';
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    component: HomeView,
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    path: '/90',
+    name: '90s',
+    component: NinetiesView,
+    children: [
+      {
+        path: 'r/:r',
+        component: NinetiesView,
+        children: [
+          {
+            path: 'post/:id',
+            component: NinetiesView,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '/2000',
+    name: '2000s',
+    component: MilleniumView,
+    children: [
+      {
+        path: 'r/:r',
+        component: MilleniumView,
+        children: [
+          {
+            path: 'post/:id',
+            component: MilleniumView,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '/royal',
+    name: 'royal',
+    component: RoyalView,
+    children: [
+      {
+        path: 'r/:r',
+        component: RoyalView,
+        children: [
+          {
+            path: 'post/:id',
+            component: RoyalView,
+          },
+        ],
+      },
+    ],
   },
 ];
 
