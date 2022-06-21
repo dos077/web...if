@@ -90,5 +90,12 @@ export default {
     },
   },
 
+  created() {
+    if (sessionStorage.redirect) {
+      const { redirect } = sessionStorage;
+      delete sessionStorage.redirect;
+      this.$router.push(redirect);
+    }
+  },
 };
 </script>

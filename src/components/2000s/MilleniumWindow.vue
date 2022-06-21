@@ -5,7 +5,7 @@
     <q-bar style="background: rgba(0,0,0,0);" class="q-px-sm">
       <div class="absolute-top-left q-px-sm">
         <q-btn round size="0.33rem" glossy color="red" class="inset-shadow"
-          href="/"
+          @click="$router.push('/')"
         />
       </div>
       <div class="col-12 text-center text-grey-6">

@@ -14,7 +14,7 @@
       size="0.7em"
       padding="none"
       class="text-black shadow-3 inset-shadow-down"
-      href="/"
+      @click="$router.push('/')"
     />
   </q-bar>
   <slot></slot>
