@@ -55,20 +55,10 @@
           <div v-if="mainPost.selftext" class="q-px-xs">
             {{ mainPost.selftext }}
           </div>
-          <div v-if="mainPost.embed">
-            <a :href="mainPost.url" target="_blank">
-              <q-img :src="mainPost.embed.thumbnail_url" :ratio="16/9"
-                style="max-width: 40rem;"
-                :style="isPhone ? 'min-width: 8rem;' : 'min-width: 22rem;'"
-              >
-                <div class="absolute-full flex flex-center"
-                  style="background: rgba(0,0,0,0.25);"
-                >
-                  <q-icon name="mdi-play" size="xl" />
-                </div>
-              </q-img>
-            </a>
-          </div>
+          <media-embed v-if="mainPost.embed"
+            :id="mainPost.id + 'embed'"
+            :html="mainPost.embed.content"
+          />
           <div v-if="mainPost.video">
             <q-video :src="mainPost.video.fallback_url"
               style="max-width: 40rem;"
@@ -129,9 +119,13 @@
 
 <script>
 import { mapState } from 'vuex';
+import MediaEmbed from './MediaEmbed.vue';
 
 export default {
   name: 'PostComments',
+  components: {
+    MediaEmbed,
+  },
   computed: {
     ...mapState(['loading', 'mainPost', 'comments']),
     isXl() {

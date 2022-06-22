@@ -68,12 +68,12 @@ const parseMainPost = (resJson) => {
       }
     });
   }
-  res.embed = data.media && data.media.oembed
-    ? { ...data.media.oembed }
+  res.embed = data.media_embed && data.media_embed.content
+    ? { ...data.media_embed }
     : null;
   // title, html, thumbnail_url
   res.flair = data.link_flair_text;
-  if (url.match(/\.gif$/g)) {
+  if (url.match(/\.gif$/g) || url.match(/\.gifv$/g)) {
     if (!res.images) res.images = [{ url }];
     else res.images.push({ url });
   } else if (data.media && data.media.reddit_video) {

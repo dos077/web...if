@@ -35,7 +35,9 @@
     <div :style="innerTransform"
       style="width: 100%; height: 100%;"
     >
-      <q-scroll-area style="max-width: 90%; height: 95%;">
+      <q-scroll-area style="max-width: 90%; height: 95%;"
+        ref="mainScroll"
+      >
         <q-list v-if="!loading">
           <q-item v-for="post in sortedPosts" :key="post.id"
             clickable v-ripple
@@ -70,7 +72,9 @@
     <div :style="innerTransform"
       style="width: 100%; height: 100%;"
     >
-      <q-scroll-area style="max-width: 95%; height: 95%;">
+      <q-scroll-area style="max-width: 95%; height: 95%;"
+        ref="miniScroll"
+      >
         <div v-if="isPhone && subSelected"
           class="item text-subtitle2 bg-grey-10 text-white"
         >
@@ -217,6 +221,17 @@ export default {
       ) / 7;
       const translate = `translate(${xSet}%, ${ySet}%)`;
       return `transform: ${rotate} ${translate};`;
+    },
+  },
+  watch: {
+    subSelected(to, from) {
+      if (to !== from) {
+        if (this.$refs.mainScroll) {
+          this.$refs.mainScroll.setScrollPosition('vertical', 0);
+        } else if (this.$refs.mainScroll) {
+          this.$refs.miniScroll.setScrollPosition('vertical', 0);
+        }
+      }
     },
   },
   methods: {
