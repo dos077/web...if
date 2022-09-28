@@ -88,8 +88,8 @@
             @click="$store.commit('addHide', subSelected.r)"
           />
         </div>
-        <div v-if="isPhone" class="item is-phone">
-          <q-btn v-if="subSelected"
+        <div class="item is-phone">
+          <q-btn v-if="isPhone && subSelected"
             flat icon="mdi-arrow-left"
             @click="$store.commit('selectR', null)"
           />
@@ -325,7 +325,6 @@ export default {
                     -3px -4px 8px red;
     }
     &.is-phone {
-      float: left;
       padding: 0;
       &:hover {
         background: #ddd;

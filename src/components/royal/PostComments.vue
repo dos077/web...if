@@ -55,14 +55,21 @@
           <div v-if="mainPost.selftext" class="q-px-xs">
             {{ mainPost.selftext }}
           </div>
-          <media-embed v-if="mainPost.embed"
-            :id="mainPost.id + 'embed'"
-            :html="mainPost.embed.content"
-          />
+          <div
+            style="max-width: 40rem;"
+            :style="isPhone ? 'width: 60vw;' : 'min-width: 22rem;'"
+          >
+            <media-embed v-if="mainPost.embed"
+              :id="mainPost.id + 'embed'"
+              :html="mainPost.embed.content"
+              class="i-container"
+              style="width: 100%;"
+            />
+          </div>
           <div v-if="mainPost.video">
             <q-video :src="mainPost.video.fallback_url"
-              style="max-width: 40rem;"
               :ratio="3/2"
+              style="max-width: 40rem;"
               :style="isPhone ? 'min-width: 8rem;' : 'min-width: 22rem;'"
             />
           </div>

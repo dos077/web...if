@@ -13,7 +13,7 @@
         <div class="menu-list" @click="$router.push('/')">
           <q-icon name="mdi-arrow-left"></q-icon>
         </div>
-        <div v-if="!isPhone"
+        <div
           class="menu-list"
           :style="listTransforms[0]"
           :class="{

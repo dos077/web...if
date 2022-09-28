@@ -13,7 +13,10 @@ export default {
   mounted() {
     const tempDom = document.createElement('textarea');
     tempDom.innerHTML = this.html;
-    const trimedStr = tempDom.value.replace(/^"/g, '').replace(/$"/g);
+    const trimedStr = tempDom.value
+      .replace(/^"/g, '')
+      .replace(/$"/g)
+      .replace(/width=.+ /g, 'width="100%" ');
     this.rawHtml = trimedStr;
   },
 };
